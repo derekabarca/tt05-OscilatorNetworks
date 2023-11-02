@@ -1,20 +1,20 @@
 module neuron(
   input wire reset,          // reset signal
-  input wire inhibit,        // inhibition signal
+  input wire enable,        // enableble signal
   output wire spike          // spike output
 );
 
   reg [2:0] count;           // timer counter
   reg spike_output;          // signal for when spike is generated
 
-  always @(posedge reset or posedge inhibit) begin
+  always @(posedge reset or posedge enable) begin
     if (reset) begin
       count <= 3'b000;       // reset the count
       spike_output <= 1'b0;  // initial state has no spike
     end
-    else if (inhibit) begin
-      count <= 3'b000;       // inhibit state, reset the count
-      spike_output <= 1'b0;  // no spike during inhibition
+    else if (enable) begin
+      count <= 3'b000;       // enable state, reset the count
+      spike_output <= 1'b0;  // no spike during enable
     end
     else begin
       // increase the count on each clock edge
@@ -33,4 +33,4 @@ module neuron(
   assign spike = spike_output;
 
 endmodule
-// module generates a spike signal (spike) based on a count and can be reset or inhibited with the reset and inhibit signals.
+// module generates a spike signal (spike) based on a count and can be reset or enable with the reset and enable signals.
