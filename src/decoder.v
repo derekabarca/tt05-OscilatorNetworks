@@ -1,16 +1,3 @@
-
-/*
-      -- 1 --
-     |       |
-     6       2
-     |       |
-      -- 7 --
-     |       |
-     5       3
-     |       |
-      -- 4 --
-*/
-
 module seg7 (
     input wire [3:0] counter,
     output reg [6:0] segments
