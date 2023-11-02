@@ -1,6 +1,6 @@
 `default_nettype none
 
-module tt_um_seven_segment_seconds #( parameter MAX_COUNT = 24'd10_000_000 ) (
+module tt_um_seven_segment_seconds (
     input  wire [7:0] ui_in,    // Dedicated inputs - connected to the input switches
     output wire [7:0] uo_out,   // Dedicated outputs - connected to the 7 segment display
     input  wire [7:0] uio_in,   // IOs: Bidirectional Input path
@@ -16,8 +16,13 @@ module tt_um_seven_segment_seconds #( parameter MAX_COUNT = 24'd10_000_000 ) (
     assign uo_out[6:0] = led_out;
     assign uo_out[7] = 1'b0;
 
+
+
+    // can trash the stuff below
+
     // use bidirectionals as outputs
     assign uio_oe = 8'b11111111;
+    
 
     // put bottom 8 bits of second counter out on the bidirectional gpio
     assign uio_out = second_counter[7:0];
