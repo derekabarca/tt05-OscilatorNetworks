@@ -7,8 +7,8 @@ module neuron(
   reg [2:0] count;           // timer counter
   reg spike_output;          // signal for when spike is generated
 
-  always @(posedge reset or posedge enable) begin
-    if (reset) begin
+  always @(posedge !reset or posedge enable) begin
+    if (!reset) begin
       count <= 3'b000;       // reset the count
       spike_output <= 1'b0;  // initial state has no spike
     end

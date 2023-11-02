@@ -79,7 +79,7 @@ module tt_um_topLevel (
   // output of the synapse module becomes the network's spike output
   assign spike_output = spike_neuron2;
 
-  // Connect the unused pins to Neuron or Synapse modules
+  // connect the unused pins to Neuron or Synapse modules
   assign ui_in = 8'b0;           // no specific input from switches
   assign uo_out = 8'b0;          // no specific output to 7-segment display
   assign uio_in = 8'b0;          // no specific bidirectional input
