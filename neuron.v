@@ -1,4 +1,3 @@
-// neuron module
 module neuron(
   input wire reset,          // reset signal
   input wire inhibit,        // inhibition signal
@@ -34,3 +33,4 @@ module neuron(
   assign spike = spike_output;
 
 endmodule
+// module generates a spike signal (spike) based on a count and can be reset or inhibited with the reset and inhibit signals.
