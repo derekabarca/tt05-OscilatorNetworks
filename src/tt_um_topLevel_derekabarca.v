@@ -10,10 +10,34 @@ module tt_um_topLevel_derekabarca (
     input  wire       clk,      // clock
     input  wire       rst_n,     // reset_n - low to reset
 
-    output wire spike_output    // spike output
+    output wire spike_output
 );
 
-    // wire reset = ! rst_n;
+    // topLevel logic
+
+  wire reset = !rst_n;
+  wire spike_neuron1, spike_neuron2;  // spike signals from neuron modules
+
+  // instantiate 2 neuron modules
+  neuron neuron1 (.reset(reset), .enable(ena), .spike(spike_neuron1));
+  neuron neuron2 (.reset(reset), .enable(ena), .spike(spike_neuron2));
+
+  // instantiate synapse module
+  synapse synapse1 (.spike_input(spike_neuron1), .spike_output(spike_neuron2));
+
+  // output of the synapse module becomes the network's spike output
+  assign spike_output = spike_neuron2;
+
+  // connect the unused pins to Neuron or Synapse modules
+  assign ui_in = 8'b0;           // no specific input from switches
+  assign uo_out = 8'b0;          // no specific output to 7-segment display
+  assign uio_in = 8'b0;          // no specific bidirectional input
+  assign uio_out = 8'b0;         // no specific bidirectional output
+  assign uio_oe = 8'b0;          // no specific bidirectional enable path
+
+endmodule
+
+
     // wire [6:0] led_out;
     // assign uo_out[6:0] = led_out;
     // assign uo_out[7] = 1'b0;
@@ -65,25 +89,3 @@ module tt_um_topLevel_derekabarca (
     // seg7 seg7(.counter(digit), .segments(led_out));
 
 
-  // topLevel logic
-
-  wire spike_neuron1, spike_neuron2;  // Spike signals from Neuron modules
-
-  // instantiate 2 neuron modules
-  neuron neuron1 (.reset(rst_n), .ena(ena), .spike(spike_neuron1));
-  neuron neuron2 (.reset(rst_n), .ena(ena), .spike(spike_neuron2));
-
-  // instantiate synapse module
-  synapse synapse1 (.spike_input(spike_neuron1), .spike_output(spike_neuron2));
-
-  // output of the synapse module becomes the network's spike output
-  assign spike_output = spike_neuron2;
-
-  // connect the unused pins to Neuron or Synapse modules
-  assign ui_in = 8'b0;           // no specific input from switches
-  assign uo_out = 8'b0;          // no specific output to 7-segment display
-  assign uio_in = 8'b0;          // no specific bidirectional input
-  assign uio_out = 8'b0;         // no specific bidirectional output
-  assign uio_oe = 8'b0;          // no specific bidirectional enable path
-
-endmodule
