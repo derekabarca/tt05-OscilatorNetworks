@@ -25,7 +25,7 @@ module neuron(
         count <= 3'b000;       // count resets after spike 
       end
       else begin
-        spike_output <= 1'b0;  // No spike
+        spike_output <= 1'b0;  // no spike
       end
     end
   end

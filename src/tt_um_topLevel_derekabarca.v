@@ -34,7 +34,6 @@ module tt_um_topLevel_derekabarca (
 
 endmodule
 
-
     // wire [6:0] led_out;
     // assign uo_out[6:0] = led_out;
     // assign uo_out[7] = 1'b0;
