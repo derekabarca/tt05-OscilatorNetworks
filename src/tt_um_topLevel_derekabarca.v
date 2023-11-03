@@ -22,8 +22,12 @@ module tt_um_topLevel_derekabarca (
   // instantiate synapse module
   synapse synapse1 (.spike_input(spike_neuron1), .spike_output(spike_neuron2));
 
+  // trying something
+  wire common_spike_neuron2;
+  assign common_spike_neuron2 = spike_neuron2;
+
   // output of the synapse module becomes the network's spike output
-  assign spike_output = spike_neuron2;
+  assign spike_output = common_spike_neuron2;
 
   // connect the unused pins to Neuron or Synapse modules
   // assign ui_in = 8'b0;           // no specific input from switches
