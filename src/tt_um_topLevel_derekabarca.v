@@ -14,15 +14,23 @@ module tt_um_topLevel_derekabarca (
 );
   // topLevel logic
   wire reset = !rst_n;
-  wire spike_neuron1, spike_neuron2, synapse1_out;  // spike signals from neuron modules & synpase output
-
+  wire spike_neuron1, spike_neuron2  // spike signals from neuron modules & synpase output
+  // wire synapse1_out;
   // instantiate 2 neuron modules
   neuron neuron1 (.reset(reset), .enable(ena), .spike(spike_neuron1));
   neuron neuron2 (.reset(reset), .enable(synapse1_out), .spike(spike_neuron2));
 
   // instantiate 2 synapse module
-  synapse synapse1 (.spike_input(spike_neuron1), .spike_output(synapse1_out));
-  synapse synapse2 (.spike_input(spike_neuron2), .spike_output(spike_output));
+  // synapse synapse1 (.spike_input(spike_neuron1), .spike_output(synapse1_out));
+  // synapse synapse2 (.spike_input(spike_neuron2), .spike_output(spike_output));
+
+  synapse synapse1 (.spike_input(spike_neuron1), .spike_output(spike_neuron2));
+  synapse synapse2 (.spike_input(spike_neuron2), .spike_output(spike_neuron1)); // Connect to neuron1
+
+  assign spike_output = spike_neuron1;  // Set the spike_output to the output of neuron1
+
+
+
 
   assign uo_out = 8'b0;          // no specific output to 7-segment display
   assign uio_out = 8'b0;         // no specific bidirectional output
