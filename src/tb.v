@@ -27,7 +27,7 @@ module tb ();
     wire [7:0] uo_out;
     wire [7:0] uio_out;
     wire [7:0] uio_oe;
-    wire spike_ouput;
+    wire spike_output;
 
     tt_um_topLevel_derekabarca (
     // include power ports for the Gate Level test
@@ -43,10 +43,10 @@ module tb ();
         .ena        (ena),      // enable - goes high when design is selected
         .clk        (clk),      // clock
         .rst_n      (rst_n),    // not reset
-        .spike_ouput(spike_output) // output of topLevel
+        .spike_output(spike_output) // output of topLevel
         );
 
 
-        
+
 
 endmodule
