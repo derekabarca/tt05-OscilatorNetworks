@@ -29,7 +29,7 @@ module tb ();
     wire [7:0] uio_oe;
     wire spike_output;
 
-    tt_um_topLevel_derekabarca (
+    tt_um_topLevel_derekabarca tt_um_topLevel_derekabarca (
     // include power ports for the Gate Level test
     `ifdef GL_TEST
         .VPWR( 1'b1),
@@ -45,8 +45,5 @@ module tb ();
         .rst_n      (rst_n),    // not reset
         .spike_output(spike_output) // output of topLevel
         );
-
-
-
 
 endmodule
