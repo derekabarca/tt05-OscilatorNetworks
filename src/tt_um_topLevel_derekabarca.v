@@ -83,5 +83,3 @@ endmodule
 
     // // instantiate segment display
     // seg7 seg7(.counter(digit), .segments(led_out));
-
-
