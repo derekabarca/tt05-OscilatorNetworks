@@ -26,9 +26,9 @@ module tt_um_topLevel_derekabarca (
   assign spike_output = spike_neuron2;
 
   // connect the unused pins to Neuron or Synapse modules
-  assign ui_in = 8'b0;           // no specific input from switches
+  // assign ui_in = 8'b0;           // no specific input from switches
   assign uo_out = 8'b0;          // no specific output to 7-segment display
-  assign uio_in = 8'b0;          // no specific bidirectional input
+  // assign uio_in = 8'b0;          // no specific bidirectional input
   assign uio_out = 8'b0;         // no specific bidirectional output
   assign uio_oe = 8'b0;          // no specific bidirectional enable path
 
