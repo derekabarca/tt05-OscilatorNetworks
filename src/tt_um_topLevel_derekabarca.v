@@ -14,25 +14,17 @@ module tt_um_topLevel_derekabarca (
 );
   // topLevel logic
   wire reset = !rst_n;
-  wire spike_neuron1, spike_neuron2;  // spike signals from neuron modules
-  wire temp_wire_synapse1out, temp_wire_synapse2out;
+  wire spike_neuron1, spike_neuron2 synapse1_out;  // spike signals from neuron modules & synpase output
 
   // instantiate 2 neuron modules
   neuron neuron1 (.reset(reset), .enable(ena), .spike(spike_neuron1));
-  neuron neuron2 (.reset(reset), .enable(ena), .spike(spike_neuron2));
+  neuron neuron2 (.reset(reset), .enable(synapse1_out), .spike(spike_neuron2));
 
-  // instantiate 2 synapse modules
-  synapse synapse1 (.spike_input(spike_neuron1), .spike_output(temp_wire_synapse2out));
-  synapse synapse2 (.spike_input(spike_neuron2), .spike_output(temp_wire_synapse2out));
+  // instantiate 2 synapse module
+  synapse synapse1 (.spike_input(spike_neuron1), .spike_output(synapse1_out));
+  synapse synapse2 (.spike_input(spike_neuron2), .spike_output(spike_output));
 
-
-  // output of the synapse module becomes the network's spike output
-  assign spike_output = temp_wire_synapse2out || temp_wire_synapse2out;
-
-  // connect the unused pins to Neuron or Synapse modules
-  // assign ui_in = 8'b0;           // no specific input from switches
   assign uo_out = 8'b0;          // no specific output to 7-segment display
-  // assign uio_in = 8'b0;          // no specific bidirectional input
   assign uio_out = 8'b0;         // no specific bidirectional output
   assign uio_oe = 8'b0;          // no specific bidirectional enable path
 
