@@ -15,8 +15,8 @@ module tt_um_topLevel_derekabarca (
   wire temp_wire_synapse1out, temp_wire_synapse2out;
 
   // instantiate 2 neuron modules
-  neuron neuron1 (.clk(clk), .reset(reset), .enable(ena), .spike(spike_neuron1));
-  neuron neuron2 (.clk(clk), .reset(reset), .enable(ena), .spike(spike_neuron2));
+  neuron neuron1 (.clk(clk), .reset(reset), .spike(spike_neuron1));
+  neuron neuron2 (.clk(clk), .reset(reset), .spike(spike_neuron2));
 
   // instantiate 2 synapse modules with separate temporary wires
   synapse synapse1 (.spike_input(spike_neuron1), .spike_output(temp_wire_synapse1out));

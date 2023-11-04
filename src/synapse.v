@@ -85,7 +85,7 @@ module synapse (
   end
 
   // assign spike_output a default value if not assigned in the always block
-  assign spike_output = (delay_counter == 2'b11) ? default_spike_output : 1'b0;
+  assign spike_output = (delay_counter == 2'b11) ? 1'b1 : 1'b0;
 // delay_counter is incremented when a positive edge of spike_input is detected. 
   // increases from 2'b00 to 2'b11, which represents a 2-cycle delay. 
     // when delay_counter reaches 2'b11,  spike_output is set to 1'b0, indicating that the delayed spike has passed through.
