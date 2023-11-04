@@ -5,16 +5,6 @@ module synapse (
 
   reg [1:0] delay_counter;   // counter for delay
 
-// always at posedge clk and whenever you recieve a spike_input
-  // always @(posedge clk or posedge spike_input) begin
-  //   if (reset) begin
-  //     delay_counter <= 2'b00;       
-  //   end
-  //   else if (delay_counter < 2'b11) begin
-  //     delay_counter <= delay_counter + 1;
-  //   end
-  // end
-
   // new always @ block
   always @(posedge clk) begin
   if (spike_input) begin
