@@ -83,7 +83,7 @@ module synapse (
       delay_counter <= 2'b00;       
       spike_output <= 1'b0;  
     end
-    else (delay_counter < 2'b11) begin
+    else if (delay_counter < 2'b11) begin
       delay_counter <= delay_counter + 1;
     end
   end

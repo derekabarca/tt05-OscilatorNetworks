@@ -20,7 +20,7 @@ module tt_um_topLevel_derekabarca (
 
   // instantiate 2 synapse modules with separate temporary wires
   synapse synapse1 (.spike_input(spike_neuron1), .spike_output(temp_wire_synapse1out), .reset(reset));
-  synapse synapse2 (.spike_input(spike_neuron2), .spike_output(temp_wire_synapse2out) .reset(reset);
+  synapse synapse2 (.spike_input(spike_neuron2), .spike_output(temp_wire_synapse2out), .reset(reset);
 
   // output of the synapse modules becomes the network's spike output
   assign spike_output = temp_wire_synapse1out || temp_wire_synapse2out;
