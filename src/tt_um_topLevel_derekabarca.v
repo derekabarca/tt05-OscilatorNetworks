@@ -11,7 +11,7 @@ module tt_um_topLevel_derekabarca (
   // topLevel logic
   wire reset = !rst_n;
   wire spike_neuron1, spike_neuron2;  // spike signals from neuron modules
-  wire temp_wire_synapse1out, temp_wire_synapse2out;
+  wire temp_wire_synapse1out, temp_wire_synapse2out, spike_output;
 
   // instantiate 2 neuron modules
   neuron neuron1 (.clk(clk), .reset(reset), .spike(spike_neuron1));
