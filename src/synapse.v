@@ -4,19 +4,31 @@ module synapse (
 );
 
   reg [1:0] delay_counter;   // counter for delay
-  wire default_spike_output; // Default value for spike_output
 
-  // default assignment
-  assign default_spike_output = 1'b0;
 // always at posedge clk and whenever you recieve a spike_input
-  always @(posedge clk or posedge spike_input) begin
+  // always @(posedge clk or posedge spike_input) begin
+  //   if (reset) begin
+  //     delay_counter <= 2'b00;       
+  //   end
+  //   else if (delay_counter < 2'b11) begin
+  //     delay_counter <= delay_counter + 1;
+  //   end
+  // end
+
+  // new always @ block
+  always @(posedge clk) begin
+  if (spike_input) begin
+    // Code to execute when spike_input is 1'b1
     if (reset) begin
-      delay_counter <= 2'b00;       
+      delay_counter <= 2'b00;
     end
     else if (delay_counter < 2'b11) begin
       delay_counter <= delay_counter + 1;
     end
   end
+end
+
+
   // assign spike_output a default value if not assigned in the always block
   assign spike_output = (delay_counter == 2'b11) ? 1'b1 : 1'b0;
 // delay_counter is incremented when a positive edge of spike_input is detected. 
