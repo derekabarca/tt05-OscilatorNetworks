@@ -27,7 +27,6 @@ module tb ();
     wire [7:0] uo_out;
     wire [7:0] uio_out;
     wire [7:0] uio_oe;
-    wire spike_output;
 
     tt_um_topLevel_derekabarca tt_um_topLevel_derekabarca (
     // include power ports for the Gate Level test
@@ -42,8 +41,7 @@ module tb ();
         .uio_oe     (uio_oe),   // IOs: Enable path (active high: 0=input, 1=output)
         .ena        (ena),      // enable - goes high when design is selected
         .clk        (clk),      // clock
-        .rst_n      (rst_n),    // not reset
-        .spike_output(spike_output) // output of topLevel
+        .rst_n      (rst_n)    // not reset
         );
 
 endmodule
