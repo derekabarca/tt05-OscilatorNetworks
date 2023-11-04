@@ -18,7 +18,7 @@ module synapse (
   // new always @ block
   always @(posedge clk) begin
   if (spike_input) begin
-    // Code to execute when spike_input is 1'b1
+    // code executes when spike_input is 1'b1
     if (reset) begin
       delay_counter <= 2'b00;
     end

@@ -44,14 +44,13 @@
 module neuron(
   input wire clk,            // clock signal
   input wire reset,          // reset signal
-  // input wire enable,        // enable signal
   output wire spike          // spike output
 );
 
   reg [2:0] count;           // 3-bit timer counter
   reg spike_output;          // signal for when a spike is generated
 
-  always @(posedge clk or posedge spike_input) begin
+  always @(posedge clk) begin
     if (reset) begin
       count <= 3'b000;       // reset the count on the rising edge of reset
       spike_output <= 1'b0;  // initial state has no spike
