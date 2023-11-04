@@ -1,5 +1,5 @@
 module synapse (
-  input wire spike_input, reset,   // spike input from the presynaptic neuron
+  input wire spike_input, clk, reset,   // spike input from the presynaptic neuron
   output wire spike_output  // spike output to the postsynaptic neuron
 );
 
@@ -8,8 +8,8 @@ module synapse (
 
   // default assignment
   assign default_spike_output = 1'b0;
-
-  always @(posedge spike_input) begin
+// always at posedge clk and whenever you recieve a spike_input
+  always @(posedge clk or posedge spike_input) begin
     if (reset) begin
       delay_counter <= 2'b00;       
     end
@@ -17,7 +17,6 @@ module synapse (
       delay_counter <= delay_counter + 1;
     end
   end
-
   // assign spike_output a default value if not assigned in the always block
   assign spike_output = (delay_counter == 2'b11) ? 1'b1 : 1'b0;
 // delay_counter is incremented when a positive edge of spike_input is detected. 
